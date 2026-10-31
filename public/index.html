@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10172a">
+  <title>Brain Arena — Multiplayer Logic Games</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark">🧠</div>
+      <div><div class="brand">BRAIN ARENA</div><div class="tagline">Think fast. Learn together. Compete.</div></div>
+      <div id="connection" class="connection">Connecting…</div>
+    </header>
+
+    <section id="home" class="panel hero">
+      <p class="eyebrow">REAL-TIME MULTIPLAYER</p>
+      <h1>Challenge your<br><span>thinking skills.</span></h1>
+      <p class="intro">Create a room or join friends. Up to 10 players compete in a fast logic challenge.</p>
+      <label for="playerName">Your display name</label>
+      <input id="playerName" maxlength="18" placeholder="Enter a nickname" autocomplete="nickname">
+      <div class="actions">
+        <button id="createBtn" class="primary">Create a room</button>
+        <div class="joinline">
+          <input id="roomCode" maxlength="6" placeholder="ROOM CODE" aria-label="Room code">
+          <button id="joinBtn" class="secondary">Join</button>
+        </div>
+      </div>
+      <p id="homeError" class="error" role="alert"></p>
+      <div class="feature-row"><span>👥 2–10 players</span><span>⏱ 15 sec/question</span><span>🧩 10 questions</span></div>
+    </section>
+
+    <section id="lobby" class="panel hidden">
+      <div class="section-head"><div><p class="eyebrow">GAME LOBBY</p><h2>Waiting room</h2></div><span id="roomBadge" class="room-badge"></span></div>
+      <p class="muted">Share this room code with friends. The host can start when at least two players have joined.</p>
+      <div class="invite"><span id="inviteCode"></span><button id="copyBtn" class="secondary small">Copy code</button></div>
+      <h3>Players <span id="playerCount" class="muted"></span></h3>
+      <ul id="playerList" class="player-list"></ul>
+      <button id="startBtn" class="primary full">Start competition</button>
+      <p id="lobbyHint" class="muted center">Waiting for another player…</p>
+      <button id="leaveBtn" class="text-button">Leave room</button>
+    </section>
+
+    <section id="game" class="panel hidden">
+      <div class="game-meta"><span id="questionProgress">QUESTION 1 / 10</span><span id="timer" class="timer">15</span></div>
+      <div class="progress"><div id="progressFill"></div></div>
+      <div class="game-layout">
+        <div class="question-area">
+          <p class="eyebrow">BRAIN CHALLENGE</p>
+          <h2 id="questionText">Question appears here</h2>
+          <div id="choices" class="choices"></div>
+          <p id="answerStatus" class="muted" aria-live="polite">Choose your answer before time runs out.</p>
+          <div id="reveal" class="reveal hidden"></div>
+        </div>
+        <aside class="score-area"><h3>Live scores</h3><ul id="scoreList" class="score-list"></ul><p id="answerCount" class="muted"></p></aside>
+      </div>
+      <button id="gameLeaveBtn" class="text-button">Leave game</button>
+    </section>
+
+    <section id="results" class="panel hidden">
+      <p class="eyebrow">COMPETITION COMPLETE</p><h2>Final leaderboard</h2>
+      <div class="trophy">🏆</div>
+      <ol id="finalRanking" class="ranking"></ol>
+      <p class="muted center">Great effort. Play another round with your group!</p>
+      <button id="backBtn" class="primary full">Back to home</button>
+    </section>
+
+    <footer>Brain Arena prototype · Scores reflect game performance, not a clinical measure of intelligence.</footer>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>

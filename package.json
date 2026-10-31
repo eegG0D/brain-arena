@@ -1,0 +1,16 @@
+{
+  "name": "brain-arena-multiplayer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A real-time 2-10 player browser brain-training game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
